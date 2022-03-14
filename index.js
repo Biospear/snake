@@ -31,13 +31,13 @@ function renderState() {
     //random apple
     scoreDisplay.innerHTML = score;
     intervalTime = 1000;
-   snake.forEach((index) => squares[index].classList.add("snake"));
+   snake.forEach((index) => squares[index].classList.push("snake"));
     interval = setInterval(moveOutcome, intervalTime);}
       
    function moveSnake(squares){
       let tail = snake.pop();
-      squares[tail].classList.remove("snake");
-      snake.unshift(snake[0] + direction);
+      squares[tail].classList.pop("snake");
+      snake.unshif(snake[0] + direction);
       // movement ends here
       eatApple(squares, tail);
       squares[snake[0]].classList.add("snake");
@@ -67,20 +67,6 @@ function onBoardClick() {
     }
   }
 
-  function eatApple(squares, tail) {
-    if (squares[snake[0]].classList.contains("apple")) {
-      squares[snake[0]].classList.remove("apple");
-      squares[tail].classList.add("snake");
-      snake.push(tail);
-      randomApple(squares);
-      score++;
-      scoreDisplay.textContent = score;
-      clearInterval(interval);
-      intervalTime = intervalTime * speed;
-      interval = setInterval(moveOutcome, intervalTime);
-    }
-  }
-}
 const board = document.getElementById('board');
 board.addEventListener('click', onBoardClick); // etc
 
