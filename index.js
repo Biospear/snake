@@ -9,7 +9,7 @@ let interval = 0;
 
 
 
-let initialState;
+
 
 function buildInitialState() {
   let snake = {
@@ -25,7 +25,7 @@ function buildInitialState() {
 
 // render
 function renderState() {
-    function gameStart(){
+    
     let squares = document.querySelectorAll(".grid div");
     randomApple(squares);
     //random apple
@@ -35,15 +35,15 @@ function renderState() {
     interval = setInterval(moveOutcome, intervalTime);}
       
    function moveSnake(squares){
-      let tail = currentSnake.pop();
-      squares[tail].classList.remove("snake");
+      let tail = snake.pop();
+      squares[tail].classList.pop("snake");
       snake.unshift(snake[0] + direction);
       // movement ends here
       eatApple(squares, tail);
       squares[snake[0]].classList.add("snake");
     }
   
-}
+
 
 // maybe a dozen or so helper functions for tiny pieces of the interface
 
@@ -53,13 +53,14 @@ function onBoardClick() {
   bottom.addEventListener("click", () => (direction = +width));
   left.addEventListener("click", () => (direction = -1));
   right.addEventListener("click", () => (direction = 1));
+}
 
   renderState() // show the user the new state
   function checkForHits(squares) {
     if (
-      (currentSnake[0] + width >= width * width && direction === width) ||
-      (currentSnake[0] % width === width - 1 && direction === 1) ||
-      squares[currentSnake[0] + direction].classList.contains("snake")
+      (snake[0] + width >= width * width && direction === width) ||
+      (snake[0] % width === width - 1 && direction === 1) ||
+      squares[snake[0] + direction].classList.contains("snake")
     ) {
       return true;
     } else {
@@ -73,12 +74,6 @@ function onBoardClick() {
       squares[tail].classList.add("snake");
       snake.push(tail);
       randomApple(squares);
-      score++;
-      scoreDisplay.textContent = score;
-      clearInterval(interval);
-      intervalTime = intervalTime * speed;
-      interval = setInterval(moveOutcome, intervalTime);
-    }
   }
 }
 const board = document.getElementById('board');
