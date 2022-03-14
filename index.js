@@ -9,8 +9,6 @@ let interval = 0;
 
 
 
-let initialState;
-
 function buildInitialState() {
   let snake = {
     body: [ [10, 5], [10, 6], [10, 7], [10, 8] ],
@@ -25,14 +23,14 @@ function buildInitialState() {
 
 // render
 function renderState() {
-    function gameStart(){
     let squares = document.querySelectorAll(".grid div");
     randomApple(squares);
     //random apple
     scoreDisplay.innerHTML = score;
     intervalTime = 1000;
    snake.forEach((index) => squares[index].classList.push("snake"));
-    interval = setInterval(moveOutcome, intervalTime);}
+    interval = setInterval(moveOutcome, intervalTime);
+}
       
    function moveSnake(squares){
       let tail = snake.pop();
@@ -43,7 +41,7 @@ function renderState() {
       squares[snake[0]].classList.add("snake");
     }
   
-}
+
 
 // maybe a dozen or so helper functions for tiny pieces of the interface
 
