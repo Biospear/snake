@@ -35,7 +35,7 @@ function renderState() {
     interval = setInterval(moveOutcome, intervalTime);}
       
    function moveSnake(squares){
-      let tail = currentSnake.pop();
+      let tail = snake.pop();
       squares[tail].classList.remove("snake");
       snake.unshift(snake[0] + direction);
       // movement ends here
@@ -57,9 +57,9 @@ function onBoardClick() {
   renderState() // show the user the new state
   function checkForHits(squares) {
     if (
-      (currentSnake[0] + width >= width * width && direction === width) ||
-      (currentSnake[0] % width === width - 1 && direction === 1) ||
-      squares[currentSnake[0] + direction].classList.contains("snake")
+      (snake[0] + width >= width * width && direction === width) ||
+      (snake[0] % width === width - 1 && direction === 1) ||
+      squares[snake[0] + direction].classList.contains("snake")
     ) {
       return true;
     } else {
