@@ -25,10 +25,8 @@ function buildInitialState() {
 
 // render
 function renderState() {
-    
+    const randomApple= (squares)
     let squares = document.querySelectorAll(".grid div");
-    randomApple(squares);
-    //random apple
     scoreDisplay.innerHTML = score;
     intervalTime = 1000;
    snake.forEach((index) => squares[index].classList.add("snake"));
@@ -55,8 +53,8 @@ function onBoardClick() {
   right.addEventListener("click", () => (direction = 1));
 }
 
-  renderState() // show the user the new state
-  function checkForHits(squares) {
+  // show the user the new state
+  function renderState(squares){
     if (
       (snake[0] + width >= width * width && direction === width) ||
       (snake[0] % width === width - 1 && direction === 1) ||
