@@ -29,8 +29,9 @@ function renderState() {
     let squares = document.querySelectorAll(".grid div");
     scoreDisplay.innerHTML = score;
     intervalTime = 1000;
-   snake.forEach((index) => squares[index].classList.add("snake"));
-    interval = setInterval(moveOutcome, intervalTime);}
+   snake.forEach((index) => squares[index].classList.push("snake"));
+    interval = setInterval(moveOutcome, intervalTime);
+}
       
    function moveSnake(squares){
       let tail = snake.pop();
